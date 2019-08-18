@@ -28,6 +28,14 @@ public class ContactController
     }
 
     @ResponseBody
+    @GetMapping("/contacts/stream")
+    public ResponseEntity<List<Contact>> getContactsByStreamFilter(@RequestParam final String nameFilter)
+    {
+        List<Contact> filteredContacts = contactService.getFilteredContactsByStream(nameFilter);
+        return new ResponseEntity<>(filteredContacts, HttpStatus.OK);
+    }
+
+    @ResponseBody
     @PostMapping("/generate")
     public ResponseEntity<?> generateContacts(@RequestParam final int count)
     {

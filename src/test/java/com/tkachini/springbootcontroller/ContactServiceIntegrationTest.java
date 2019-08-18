@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 public class ContactServiceIntegrationTest {
@@ -50,9 +50,10 @@ public class ContactServiceIntegrationTest {
 		Mockito.when(contactRepository.findAll(pageRequest))
 				.thenReturn(response);
 
-        List<Contact> filteredContacts = contactService.getFilteredContacts("^A.*$");
+        List<Contact> filteredContacts = contactService.getFilteredContactsByStream("^A.*$");
 
         Contact[] expectedArray = {contact};
-        assertArrayEquals(expectedArray, filteredContacts.toArray());
+
+        assertThat(response).containsOnly(contact);
     }
 }
