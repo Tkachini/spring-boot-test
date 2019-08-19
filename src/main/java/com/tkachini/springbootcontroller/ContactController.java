@@ -23,15 +23,15 @@ public class ContactController
     @GetMapping("/contacts")
     public ResponseEntity<List<Contact>> getContactsByFilter(@RequestParam final String nameFilter)
     {
-        List<Contact> filteredContacts = contactService.getFilteredContacts(nameFilter);
+        List<Contact> filteredContacts = contactService.getFilteredContactsByStream(nameFilter);
         return new ResponseEntity<>(filteredContacts, HttpStatus.OK);
     }
 
     @ResponseBody
-    @GetMapping("/contacts/stream")
-    public ResponseEntity<List<Contact>> getContactsByStreamFilter(@RequestParam final String nameFilter)
+    @GetMapping("/contacts/criteria")
+    public ResponseEntity<List<Contact>> getContactsByCriteriaFilter(@RequestParam final String nameFilter)
     {
-        List<Contact> filteredContacts = contactService.getFilteredContactsByStream(nameFilter);
+        List<Contact> filteredContacts = contactService.getFilteredContactsByCriteria(nameFilter);
         return new ResponseEntity<>(filteredContacts, HttpStatus.OK);
     }
 

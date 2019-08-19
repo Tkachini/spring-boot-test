@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class ContactService
 {
     private static final int WORD_LENGTH = 10;
-    private static final int BATCH_SIZE = 100;
+    private static final int BATCH_SIZE = 10000;
 
     @Autowired
     private ContactRepository contactRepository;
@@ -33,7 +33,7 @@ public class ContactService
 
         do {
             Page<Contact> contactPage = contactRepository.findAll(pageRequest);
-            List<Contact> newFilteredBatch = contactPage.getContent().stream()
+            List<Contact> newFilteredBatch = contactPage.getContent().parallelStream()
                     .filter(contact -> !contact.getName().matches(filter))
                     .collect(Collectors.toList());
             result.addAll(newFilteredBatch);
@@ -48,7 +48,7 @@ public class ContactService
         return result;
     }
 
-    public List<Contact> getFilteredContacts(final String filter)
+    public List<Contact> getFilteredContactsByCriteria(final String filter)
     {
         List<Contact> result = new ArrayList<>();
         Pageable pageRequest = PageRequest.of(0, BATCH_SIZE);

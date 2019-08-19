@@ -39,7 +39,7 @@ public class ContactsRestControllerIntegrationTest {
 
         List<Contact> allContacts = Arrays.asList(contact, contact2);
 
-        given(contactService.getFilteredContacts("asd")).willReturn(allContacts);
+        given(contactService.getFilteredContactsByCriteria("asd")).willReturn(allContacts);
 
         mvc.perform(get("/hello/contacts?nameFilter=asd")
                 .contentType(MediaType.APPLICATION_JSON))
