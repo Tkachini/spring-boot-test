@@ -39,7 +39,7 @@ public class ContactsRestControllerIntegrationTest {
 
         List<Contact> allContacts = Arrays.asList(contact, contact2);
 
-        given(contactService.getFilteredContactsByCriteria("asd")).willReturn(allContacts);
+        given(contactService.getFilteredContactsByStream("asd")).willReturn(allContacts);
 
         mvc.perform(get("/hello/contacts?nameFilter=asd")
                 .contentType(MediaType.APPLICATION_JSON))
@@ -57,9 +57,9 @@ public class ContactsRestControllerIntegrationTest {
 
         List<Contact> allContacts = Arrays.asList(contact, contact2, contact3);
 
-        given(contactService.getFilteredContactsByStream("test2")).willReturn(allContacts);
+        given(contactService.getFilteredContactsByCriteria("test2")).willReturn(allContacts);
 
-        mvc.perform(get("/hello/contacts/stream?nameFilter=test2")
+        mvc.perform(get("/hello/contacts/criteria?nameFilter=test2")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)))

@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.tkachini.springbootcontroller.service.ContactService.BATCH_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -46,7 +47,7 @@ public class ContactServiceIntegrationTest {
         Contact contact2 = new Contact("Albertovich");
         Contact contact3 = new Contact("raf123");
 
-        pageRequest = PageRequest.of(0, 100);
+        pageRequest = PageRequest.of(0, BATCH_SIZE);
 
         PageImpl<Contact> response = new PageImpl<>(Arrays.asList(contact, contact2, contact3), pageRequest, 1);
         Mockito.when(contactRepository.findAll(pageRequest))

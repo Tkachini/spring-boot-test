@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class ContactService
 {
     private static final int WORD_LENGTH = 10;
-    private static final int BATCH_SIZE = 10000;
+    public static final int BATCH_SIZE = 10000;
 
     @Autowired
     private ContactRepository contactRepository;
