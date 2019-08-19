@@ -19,4 +19,4 @@ Words will contains [A-z, 0-9].
 
 OR:
 
-`localhost:8080//hello/contacts/criteria?nameFilter=val` - this resource use criteria builder and built in postgres function(`) to filter contacts. It is faster.
+`localhost:8080//hello/contacts/criteria?nameFilter=val` - this resource use criteria builder and built in postgres function(~) to filter contacts. It is faster.
