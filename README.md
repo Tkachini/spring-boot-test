@@ -1,4 +1,4 @@
-# Spring Boot Controller app
+# Spring Boot Controller app [![Build Status](https://travis-ci.com/Tkachini/spring-boot-test.svg?branch=master)](https://travis-ci.com/Tkachini/spring-boot-test)
 
 ## 1. Build app & Dockerfile
 
